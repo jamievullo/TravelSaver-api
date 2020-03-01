@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
 
+    # prevents rails from using its own token
     skip_before_action :verify_authenticity_token
+    #declared as helper method to allow use in other controllers
     helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
 
 def login!
