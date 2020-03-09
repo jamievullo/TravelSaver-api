@@ -65,6 +65,18 @@ class ScrapeController < ApplicationController
 
     def adventure
 
+        url = 'https://www.tripstodiscover.com/20-cool-travel-destinations-for-the-adventure-junkie/'
+        
+        page = Nokogiri::HTML(open(url))
+        slides = page.css('.page')
+        destinations = slides.map do |slide| 
+            {
+            title: slide.css('h2').text,
+            img: slide.css('img').attr('data-src').value,
+            content: slide.css('p').text
+            }
+        end
+        render json: {results: destinations}
     end
 
 end
