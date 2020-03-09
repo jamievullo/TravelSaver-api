@@ -20,8 +20,20 @@ class ScrapeController < ApplicationController
         render json: {results: destinations}
     end
 
-    def vacation_packages
+    def family_vacations
 
+        url = 'https://www.tripstodiscover.com/best-family-vacations-with-toddlers/8/'
+        
+        page = Nokogiri::HTML(open(url))
+        slides = page.css('.page')
+        destinations = slides.map do |slide| 
+            {
+            title: slide.css('h2').text,
+            img: slide.css('img').attr('data-src').value,
+            content: slide.css('p').text
+            }
+        end
+        render json: {results: destinations}
     end
 
     def weekend_getaways

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
 
   get '/popular_destinations', to: 'scrape#popular_destinations'
-  get '/vacation_packages', to: 'scrape#vacation_packages'
+  get '/family_vacations', to: 'scrape#family_vacations'
   get '/weekend_getaways', to: 'scrape#weekend_getaways'
   get '/explore', to: 'scrape#explore'
   get '/tropical', to: 'scrape#tropical'
