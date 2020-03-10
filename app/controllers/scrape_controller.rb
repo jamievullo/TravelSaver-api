@@ -29,8 +29,8 @@ class ScrapeController < ApplicationController
         destinations = slides.map do |slide| 
             {
             title: slide.css('h2').text,
-            img: slide.css('img').attr('data-src').value,
-            content: slide.css('p').text
+            image: slide.css('img').attr('data-src').value,
+            description: slide.css('p').text
             }
         end
         render json: {results: destinations}
@@ -71,8 +71,19 @@ class ScrapeController < ApplicationController
         render json: {results: destinations}
     end
 
-    def tropical
+    def not_your_average
 
+        url = 'https://www.tripstodiscover.com/best-astronomy-tours-in-the-world/'
+            page = Nokogiri::HTML(open(url))
+            slides = page.css('.page')
+            destinations = slides.map do |slide| 
+                {
+                title: slide.css('h2').text,
+                image: slide.css('img').attr('data-src').value,
+                description: slide.css('p').text
+                }
+            end
+            render json: {results: destinations}
     end
 
     def adventure
@@ -84,8 +95,8 @@ class ScrapeController < ApplicationController
         destinations = slides.map do |slide| 
             {
             title: slide.css('h2').text,
-            img: slide.css('img').attr('data-src').value,
-            content: slide.css('p').text
+            imageg: slide.css('img').attr('data-src').value,
+            description: slide.css('p').text
             }
         end
         render json: {results: destinations}
