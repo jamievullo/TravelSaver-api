@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         else
             render json: {
             status: 500,
-            errors: ['no users found']
+            errors: ['No Users Found']
             }
         end
     end
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         else
         render json: {
             status: 500,
-            errors: ['user not found']
+            errors: ['User Not Found']
         }
         end
     end
