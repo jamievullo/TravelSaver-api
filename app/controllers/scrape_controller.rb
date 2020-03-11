@@ -95,7 +95,7 @@ class ScrapeController < ApplicationController
         destinations = slides.map do |slide| 
             {
             title: slide.css('h2').text,
-            imageg: slide.css('img').attr('data-src').value,
+            image: slide.css('img').attr('data-src').value,
             description: slide.css('p').text
             }
         end
