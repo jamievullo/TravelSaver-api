@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
             login!
             render json: {
             logged_in: true,
-            user: @user
+            user: @user, except: [:password, :password_digest]
             }
         else
             render json: { 
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
         if logged_in? && current_user
             render json: {
             logged_in: true,
-            user: current_user
+            user: current_user, except: [:password, :password_digest]
             }
         else
             render json: {
